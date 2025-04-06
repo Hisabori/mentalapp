@@ -4,7 +4,7 @@ buildscript {
         minSdkVersion = 24
         compileSdkVersion = 35
         targetSdkVersion = 34
-        ndkVersion = "27.1.12297006"
+        ndkVersion = "27.1.12297006" // NDK는 app/build.gradle에서 android 블럭 안에도 선언해야 함
         kotlinVersion = "2.0.21"
     }
     repositories {
@@ -12,10 +12,16 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle")
+        // ✅ gradle 버전 명시
+        classpath("com.android.tools.build:gradle:8.0.2")
         classpath("com.facebook.react:react-native-gradle-plugin")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21")
     }
 }
 
-apply plugin: "com.facebook.react.rootproject"
+allprojects {
+    repositories {
+        mavenCentral()
+        google()
+    }
+}
