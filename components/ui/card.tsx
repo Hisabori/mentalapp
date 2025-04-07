@@ -1,4 +1,5 @@
 // components/ui/card.tsx
+import React from 'react';
 import { View, StyleSheet, ViewProps } from 'react-native';
 
 export const Card = ({ children, style, ...props }: ViewProps) => {
